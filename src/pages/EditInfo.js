@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 
 
-export default function EditInfo({ newtasks, taskUpdate, setNewtasks }) {
+export default function EditInfo({ newtasks, taskUpdate, setNewTasks, updateTasks }) {
 
     const [task, setTask] = useState(taskUpdate.task)
     const [discription, setDiscription] = useState(taskUpdate.discription)
     const [priority, setPriotity] = useState(taskUpdate.priority)
+    const [newtask, setNewTask] = useState()
 
     const [show, setShow] = useState("")
     const handleShow = (e) => setShow(true)
@@ -24,8 +25,8 @@ export default function EditInfo({ newtasks, taskUpdate, setNewtasks }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(updatedTasks)
-        setTask(newtasks.map(t => {
+        console.log(taskUpdate.priority)
+        setNewTask(newtasks.map(t => {
             return t.task === taskUpdate.task ?
                 {
                     task: taskUpdate.task,
@@ -37,7 +38,9 @@ export default function EditInfo({ newtasks, taskUpdate, setNewtasks }) {
                 t
         }))
 
-        updatedTasks = { task: "", discription: "", priority: "" }
+        updatedTasks = { task: + "", discription: "", priority: "" }
+
+        taskUpdate={}
 
     }
 
@@ -53,26 +56,20 @@ export default function EditInfo({ newtasks, taskUpdate, setNewtasks }) {
                 <h3>Welcome to your ToDo application</h3>
 
 
-                <input className="task" type="text" value={task} placeholder="Task Name" name="Task" onChange={(event) => setTask(event.target.value)} />
+                <input className="task" type="text" value={task} placeholder="Task Name" name="Task" onChange={(e) => setTask(e.target.value)} />
                 <br />
-                <input className="discription" type="text"  value={discription} placeholder="Add Task Discription" name="Discription" onChange={(event) => setDiscription(event.target.value)} />
+                <input className="discription" type="text"  value={discription} placeholder="Add Task Discription" name="Discription" onChange={(e) => setDiscription(e.target.value)} />
                 <br />
-                <select className="select-button" value={priority} onChange={(event) => setPriotity(event.target.value)} placeholder="Choose Priority">
+                <select className="select-button" value={priority} onChange={(e) => setPriotity(e.target.value)} placeholder="Choose Priority">
                     <br />
-                    <option>High</option>
-                    <option>Mid</option>
-                    <option>Low</option>
+                    <option>High Priority</option>
+                    <option>Middle Priority</option>
+                    <option>Low Priority</option>
                 </select>
                 <br />
 
                 <button type="submit" >Add Task</button>
             </form>
-
-
-
-
-
-
 
         </>
 

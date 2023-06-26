@@ -3,7 +3,7 @@ import { Button, ModalBody, ModalFooter, ModalHeader, ModalTitle, Modal } from "
 
 import EditInfo from "./EditInfo";
 
-export default function DisplayTasks({newtasks, handleDelete, setNewTask}) {
+export default function DisplayTasks({newtasks, handleDelete, setNewTasks, updateTasks}) {
 
     //const { updateTask } = useState(props.employees)
 
@@ -19,6 +19,7 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTask}) {
     const handleShow = (t) => {
        setCurrentTask(t)
         setShow(true)
+        console.log("display.js",t)
 
     }
 
@@ -36,9 +37,9 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTask}) {
                         <th> Priority</th>
                         <th>Operations</th>
                     </tr>
-                   {/* {console.log(newtasks)} */}
+                   {console.log('display=newtasks===',newtasks)}
 
-                    {newtasks.map((data, tasks) => {{}
+                    {newtasks.map((data, index) => {{}
                         
                         return (
                             <tr>
@@ -48,7 +49,7 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTask}) {
                                 <td>{data.priority}</td>
 
                                 <td>
-                                    <button onClick={() => handleDelete(data.tasks)} >Delete</button>
+                                    <button onClick={() => handleDelete(data.task)} >Delete</button>
                                     <button onClick={() => { handleShow(data) }} >Update</button></td>
                             </tr>
 
@@ -66,7 +67,7 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTask}) {
                 </ModalHeader>
                 <ModalBody>
 
-                    <EditInfo taskUpdate={currentTask} newtasks={newtasks} setNewtasks={setNewTask} />
+                    <EditInfo taskUpdate={currentTask} newtasks={newtasks} setNewTasks={setNewTasks} />
 
                 </ModalBody>
                 <ModalFooter>

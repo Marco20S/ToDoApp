@@ -90,19 +90,19 @@ function App() {
   //delete function
 
   const handleDelete = (deleteTask) => {
-    console.log(deleteTask)
+    console.log("handleDelete", deleteTask)
     alert("The following Tasks will be removed from the list: ")
     setNewTasks(newtasks.filter(tasks => {
-      console.log(tasks.name, '==', deleteTask)
-      return tasks.name !== deleteTask
+      console.log(tasks.task, '==', deleteTask)
+      return tasks.task !== deleteTask
     }
     ))
     console.log("deleted task", setNewTasks)
   }
 
   //update function
-  const updateTasks = (tasks, updatedTasks) => {
-    setNewTasks(newtasks.map((task) => task.name === tasks ?
+  const updateTasks = (task, updatedTasks) => {
+    setNewTasks(newtasks.map((tasks) => tasks.task === task ?
       updatedTasks : tasks))
     console.log("UPDATE", setNewTasks)
 
@@ -115,7 +115,7 @@ function App() {
           {/* {console.log("App.js", newtasks)} */}
           <Routes>
 
-            <Route path='/' element={<Home add={add} handleDelete={handleDelete} updateTasks={updateTasks}  newtasks={newtasks || []} />} />
+            <Route path='/' element={<Home add={add} handleDelete={handleDelete} updateTasks={updateTasks} setNewTasks={setNewTasks} newtasks={newtasks || []} />} />
             <Route path='/register/' element={<Register addUser={addUser} user={user || []} />} />
             <Route path='/login/' element={<Login login={login} user={user} />} />
 

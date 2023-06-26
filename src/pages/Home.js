@@ -6,13 +6,14 @@ import { Button, ModalBody, ModalFooter, ModalHeader, ModalTitle, Modal } from "
 import EditInfo from "./EditInfo";
 
 
-export default function Home({ newtasks, add , handleDelete }) {
+export default function Home({ newtasks, add , handleDelete, setNewTasks, updateTasks }) {
 
     const [task, setTask] = useState("");
     const [discription, setDiscription] = useState("");
     const [priority, setPriotity] = useState("");
     const [index, setIndex] = useState("")
     const { item, setItem } = useState(0);
+    
 
     useEffect(() => { })
 
@@ -47,7 +48,7 @@ export default function Home({ newtasks, add , handleDelete }) {
             </form>
 
             <h2 className="">Tasks In Circulation</h2>
-            <DisplayTasks newtasks={newtasks} handleDelete={handleDelete}  />
+            <DisplayTasks newtasks={newtasks} handleDelete={handleDelete} setNewTasks ={ setNewTasks} updateTasks = {updateTasks}  />
 
         </>
 
