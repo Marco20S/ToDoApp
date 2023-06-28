@@ -18,6 +18,8 @@ function App() {
   const [user, setUser] = useState();
   const [users, setUsers] = useState();
 
+  const [isloggedin, setUserstate] = useState(false)
+
   //localstorage useEffect code for adding tasks
 
   useEffect(() => {
@@ -32,11 +34,13 @@ function App() {
   }, [])
 
   useEffect(() => {
+    console.log(newtasks)
     newtasks && localStorage.setItem('newtasks', JSON.stringify(newtasks))
+    console.log(newtasks)
   }, [newtasks])
 
 
-  //localstorage useEffect code for adding tasks
+  //localstorage useEffect code for adding users
   useEffect(() => {
     const loginLocalStorage = localStorage.getItem("users") || []
 
@@ -114,10 +118,10 @@ function App() {
         <Router>
           {/* {console.log("App.js", newtasks)} */}
           <Routes>
-
-            <Route path='/' element={<Home add={add} handleDelete={handleDelete} updateTasks={updateTasks} setNewTasks={setNewTasks} newtasks={newtasks || []} />} />
+            {/* {console.log(isloggedin)} */}
+            {newtasks && <Route path='/' element={isloggedin ? <Home add={add} handleDelete={handleDelete} updateTasks={updateTasks} setNewTasks={setNewTasks} newtasks={newtasks || []} /> : <Navigate to={"/login"} />} />}
             <Route path='/register/' element={<Register addUser={addUser} user={user || []} />} />
-            <Route path='/login/' element={<Login login={login} user={user} />} />
+            <Route path='/login/' element={!isloggedin ? <Login setUserstate={setUserstate} login={login} user={user} /> : <Navigate to={"/"} />} />
 
           </Routes>
         </Router>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
-export default function Register({add, user, addUser}) {
+export default function Register({ add, user, addUser }) {
 
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export default function Register({add, user, addUser}) {
         const temp = { name: name, username: username, mail: mail, password: password }
         addUser(temp)
         setIndex(index + 1)
-        localStorage.getItem("HandleSubmit Info", index + " " + name + " " + username + " " + mail, + " " + password )
+        localStorage.getItem("HandleSubmit Info", index + " " + name + " " + username + " " + mail, + " " + password)
         navigate('/login')
     }
 
@@ -32,10 +32,10 @@ export default function Register({add, user, addUser}) {
 
                 <h4>Please enter the following details</h4>
 
-                <div><input type="text" placeholder="Name" name="Name" onChange={(e) =>  setName(e.target.value)}/></div>
-                <div><input type="text" placeholder="Username" name="Username" onChange={(e) => setUsername(e.target.value)}/></div>
-                <div><input type="email" placeholder="e-mail" name="mail"onChange={(e) => setMail(e.target.value)} /></div>
-                <div><input type="password" placeholder="password" name="password"onChange={(e) => setPassword(e.target.value)} /></div>
+                <div><input type="text" placeholder="Name" name="Name" onChange={(e) => setName(e.target.value)} /></div>
+                <div><input type="text" placeholder="Username" name="Username" onChange={(e) => setUsername(e.target.value)} /></div>
+                <div><input type="email" placeholder="e-mail" name="mail" onChange={(e) => setMail(e.target.value)} /></div>
+                <div><input type="password" placeholder="password" name="password" onChange={(e) => setPassword(e.target.value)} /></div>
 
                 <button type="submit">Register</button>
 

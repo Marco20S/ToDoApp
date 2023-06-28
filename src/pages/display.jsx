@@ -3,7 +3,7 @@ import { Button, ModalBody, ModalFooter, ModalHeader, ModalTitle, Modal } from "
 
 import EditInfo from "./EditInfo";
 
-export default function DisplayTasks({newtasks, handleDelete, setNewTasks, updateTasks}) {
+export default function DisplayTasks({ newtasks, handleDelete, setNewTasks, updateTasks }) {
 
     //const { updateTask } = useState(props.employees)
 
@@ -17,9 +17,9 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTasks, updat
     const [show, setShow] = useState(false)
 
     const handleShow = (t) => {
-       setCurrentTask(t)
+        setCurrentTask(t)
         setShow(true)
-        console.log("display.js",t)
+        console.log("display.js", t)
 
     }
 
@@ -37,10 +37,10 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTasks, updat
                         <th> Priority</th>
                         <th>Operations</th>
                     </tr>
-                   {console.log('display=newtasks===',newtasks)}
+                    {console.log('display=newtasks===', newtasks)}
 
-                    {newtasks.map((data, index) => {{}
-                        
+                    {newtasks.map((data, index) => {
+
                         return (
                             <tr>
 
@@ -52,6 +52,8 @@ export default function DisplayTasks({newtasks, handleDelete, setNewTasks, updat
                                     <button onClick={() => handleDelete(data.task)} >Delete</button>
                                     <button onClick={() => { handleShow(data) }} >Update</button></td>
                             </tr>
+
+
 
                         )
                     })}

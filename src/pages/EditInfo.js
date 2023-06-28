@@ -8,7 +8,7 @@ export default function EditInfo({ newtasks, taskUpdate, setNewTasks, updateTask
     const [task, setTask] = useState(taskUpdate.task)
     const [discription, setDiscription] = useState(taskUpdate.discription)
     const [priority, setPriotity] = useState(taskUpdate.priority)
-    const [newtask, setNewTask] = useState()
+    //const [newtask, setNewTask] = useState()
 
     const [show, setShow] = useState("")
     const handleShow = (e) => setShow(true)
@@ -26,21 +26,26 @@ export default function EditInfo({ newtasks, taskUpdate, setNewTasks, updateTask
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(taskUpdate.priority)
-        setNewTask(newtasks.map(t => {
-            return t.task === taskUpdate.task ?
+        setNewTasks(newtasks.map((t, idx) => {
+            console.log("taskUpdate editinfo", task)
+            console.log("t.task", t.task)
+            let index = newtasks.indexOf(taskUpdate);
+            console.log(index);
+            return idx === index ?
                 {
-                    task: taskUpdate.task,
-                    discription: taskUpdate.discription,
-                    priority: taskUpdate.priority,
+                    task: task,
+                    discription: discription,
+                    priority: priority,
 
                 }
                 :
                 t
         }))
 
-        updatedTasks = { task: + "", discription: "", priority: "" }
+        updatedTasks = { task: "", discription: "", priority: "" }
 
-        taskUpdate={}
+
+        taskUpdate = {}
 
     }
 
@@ -58,7 +63,7 @@ export default function EditInfo({ newtasks, taskUpdate, setNewTasks, updateTask
 
                 <input className="task" type="text" value={task} placeholder="Task Name" name="Task" onChange={(e) => setTask(e.target.value)} />
                 <br />
-                <input className="discription" type="text"  value={discription} placeholder="Add Task Discription" name="Discription" onChange={(e) => setDiscription(e.target.value)} />
+                <input className="discription" type="text" value={discription} placeholder="Add Task Discription" name="Discription" onChange={(e) => setDiscription(e.target.value)} />
                 <br />
                 <select className="select-button" value={priority} onChange={(e) => setPriotity(e.target.value)} placeholder="Choose Priority">
                     <br />

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams, useLocation } from "react-router-dom";
 
 
-export default function Login({ user, login }) {
+export default function Login({ user, login, setUserstate }) {
 
     const navigate = useNavigate();
 
@@ -15,12 +15,14 @@ export default function Login({ user, login }) {
         const result = login(username, password)
         console.log(result)
 
-        if(result === true ) {
+        if (result === true) {
+            setUserstate(result)
             navigate('/')
-        
-        }else{
-          document.getElementById('message').style.display = "block" 
-          document.getElementById('message').style.color = "red" 
+
+        } else {
+            document.getElementById('message').style.display = "block"
+            document.getElementById('message').style.color = "red"
+            document.getElementById('message').hidden = false
         }
     }
 
@@ -35,7 +37,7 @@ export default function Login({ user, login }) {
 
             <form className="login-form">
                 <div> <input type="text" placeholder="Username" name="Username" onChange={(e) => setUsername(e.target.value)} /> </div>
-                <br/>
+                <br />
                 <div> <input type="password" placeholder="password" name="password" onChange={(e) => setPassword(e.target.value)} /> </div>
                 <button type="submit" onClick={loginHandler}>Login</button>
                 <p id="message" hidden className="message" >user entered the incorrect username or password </p>

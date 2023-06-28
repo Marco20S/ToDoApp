@@ -39,6 +39,9 @@
   }
 }
 
+.home-form{
+  border:#282c34
+}
 
 
 input{
@@ -73,6 +76,12 @@ background-color: aliceblue;
 color: gray  
 }
 
-td{
+.absolute {
+  position: absolute;
+  background-image: ("logout.png");
+  right: 150px;
+  width: 50px;
+  height: 50px;
+  border: 3px solid green;
 
-}
+} 
