@@ -25,6 +25,7 @@ export default function Home({ newtasks, add, handleDelete, setNewTasks, updateT
         localStorage.getItem("HandleSubmit Info", index + " " + task + " " + discription + " " + priority)
     }
 
+    
     return (
 
         <>
